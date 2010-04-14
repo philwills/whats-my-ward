@@ -6,7 +6,7 @@ from controller import *
 application = webapp.WSGIApplication([
 									('/upload-region', UploadRegion),
 									('/upload-postcode', UploadPostcode),
-									('/display', DisplayWard),
+									('/', DisplayWard),
 									], debug=True)
 		
 def main():

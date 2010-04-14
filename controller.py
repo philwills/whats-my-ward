@@ -19,9 +19,10 @@ class ModelAndViewPage(webapp.RequestHandler):
 
 class DisplayWard(ModelAndViewPage):
 	def get(self):
-		if self.request.get('name'):
-			wards = Ward.all().filter('name =', self.request.get('name')).fetch(limit=1)
-			self.render('display', {'ward': wards[0] })
+		postcode_query = self.request.get('postcode').replace(' ', '')
+		if postcode_query:
+			postcodes = Postcode.all().filter('postcode =', postcode_query).fetch(limit=1)
+			self.render('display', {'postcode': postcodes[0] })
 		else:
 			self.render('display')
 
