@@ -4,9 +4,9 @@
 <input type="submit" />
 </form>
 {% if postcode %}
-<ul>
-	<li>Postcode: {{ postcode.postcode }}</li>
-	<li>Ward: {{ postcode.ward.name }} ({{ postcode.ward.district.name }} - {{postcode.ward.district.county.name}})</li>
-</ul>
+<p>
+	The postcode: {{ postcode.postcode }}
+	is in: {{ postcode.ward.name }} ({{ postcode.ward.district.name }} - {{postcode.ward.district.county.name}})
+</p>
 {% endif %}
 </html>

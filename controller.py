@@ -36,13 +36,14 @@ class UploadPostcode(ModelAndViewPage):
 		ward_code = self.request.get('ward_code')
 		district_code = self.request.get('district_code')
 		county_code = self.request.get('county_code')
+		full_code = county_code + district_code + ward_code
 
-		wards = Ward.all().filter('full_code =', county_code + district_code + ward_code).fetch(limit=1)
+		wards = Ward.all().filter('full_code =', full_code).fetch(limit=1)
 		postcode_obj = Postcode(
 			postcode = postcode,
 			latitude = float(latitude),
 			longitude = float(longitude),
-			ward = wards[0],
+			ward = wards[0] if wards else None,
 		)
 		postcode_obj.put()
 
